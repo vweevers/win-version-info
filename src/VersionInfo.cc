@@ -8,7 +8,7 @@ using namespace utf8util;
 
 void CreateObject(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   if (!info[0]->IsString()) {
-    return Nan::ThrowError("versionInfo() requires a string filename");
+    return Nan::ThrowError("win-version-info requires a string filename");
   }
 
   v8::Local<v8::Object> metadata = Nan::New<v8::Object>();
@@ -28,7 +28,7 @@ void CreateObject(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   }
 
   if (!success) {
-    string msg = "Unable to access file: ";
+    string msg = "win-version-info is unable to access file: ";
     msg.append(string(*file));
     return Nan::ThrowError(Nan::New(msg).ToLocalChecked());
   }
