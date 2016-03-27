@@ -1,0 +1,48 @@
+{
+  "name": "win-version-info",
+  "version": "0.0.1",
+  "description": "Windows-only native addon to read version info from executables",
+  "license": "MIT",
+  "main": "index.js",
+  "author": "Vincent Weevers",
+  "files": [
+    "index.js",
+    "binding.gyp",
+    "src",
+    "deps"
+  ],
+  "scripts": {
+    "test": "tape test/*-test.js",
+    "install": "prebuild --compile",
+    "rebuild": "prebuild --compile",
+    "prebuild": "prebuild --all --strip --verbose"
+  },
+  "dependencies": {
+    "bindings": "~1.2.1",
+    "nan": "~2.2.0",
+    "prebuild": "~4.1.1"
+  },
+  "devDependencies": {
+    "glob": "~7.0.3",
+    "tape": "~4.5.1",
+    "tmpgen": "~1.1.1",
+    "xtend": "~4.0.1"
+  },
+  "keywords": [
+    "exe",
+    "executable",
+    "productname",
+    "productversion",
+    "version",
+    "versioninfo",
+    "windows"
+  ],
+  "engines": {
+    "node": ">=0.10.0",
+    "npm": ">=2.0.0"
+  },
+  "gypfile": true,
+  "repository": "vweevers/win-version-info",
+  "bugs": "https://github.com/vweevers/win-version-info/issues",
+  "homepage": "https://github.com/vweevers/win-version-info"
+}
