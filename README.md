@@ -2,6 +2,8 @@
 
 **Windows-only native addon to read version info from executables.**
 
+[![npm status](http://img.shields.io/npm/v/win-version-info.svg?style=flat-square)](https://www.npmjs.org/package/win-version-info) [![AppVeyor build status](https://img.shields.io/appveyor/ci/vweevers/win-version-info.svg?style=flat-square&label=appveyor)](https://ci.appveyor.com/project/vweevers/win-version-info) [![Dependency status](https://img.shields.io/david/vweevers/win-version-info.svg?style=flat-square)](https://david-dm.org/vweevers/win-version-info)
+
 ## example
 
 ```js
