@@ -45,3 +45,33 @@ test('utf-8', function (t) {
     }), 'info ok')
   })
 })
+
+test('throws on invalid input', function (t) {
+  t.plan(4)
+
+  throws('win-version-info requires a non-empty string filename', '')
+  throws('win-version-info is unable to access file: ' + process.cwd() + '\\nope.exe', 'nope.exe')
+
+  throws('win-version-info requires a string filename, got: undefined')
+  throws('win-version-info requires a string filename, got: boolean', true)
+
+  function throws(message, input) {
+    try {
+      vi(input)
+    } catch(err) {
+      t.is(err.message, message, 'throws')
+    }
+  }
+})
+
+test('binding throws on non-string', function (t) {
+  var info = require('bindings')('VersionInfo')
+
+  t.plan(1)
+
+  try {
+    info()
+  } catch(err) {
+    t.is(err.message, 'win-version-info requires a string filename', 'throws')
+  }
+})
