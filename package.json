@@ -11,6 +11,9 @@
     "src",
     "deps"
   ],
+  "os": [
+    "win32"
+  ],
   "scripts": {
     "test": "tape test/*-test.js",
     "install": "prebuild --compile",
