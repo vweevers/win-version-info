@@ -39,4 +39,4 @@ npm install win-version-info
 
 - The main body of this project comes from [ShowVer](http://www.codeproject.com/Articles/2457/ShowVer-exe-command-line-VERSIONINFO-display-progr) © Ted Peck 2002
 - Converting between UTF-16 and UTF-8 made possible by  [UTF8Conversion](https://code.msdn.microsoft.com/C-UTF-8-Conversion-Helpers-22c0a664) ([Apache License 2.0](http://spdx.org/licenses/Apache-2.0.html)) © 2011 Giovanni Dicanio
-- For getting me started on addon development: [node-native-boilerplate](https://github.com/fcanas/node-native-boilerplate) © 2015 Fabian Canas
+- For getting me started with addon development: [node-native-boilerplate](https://github.com/fcanas/node-native-boilerplate) © 2015 Fabian Canas
