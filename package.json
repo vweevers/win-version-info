@@ -16,7 +16,7 @@
   ],
   "scripts": {
     "test": "tape test/*-test.js",
-    "install": "prebuild --compile",
+    "install": "prebuild --install",
     "rebuild": "prebuild --compile",
     "prebuild": "prebuild --all --strip --verbose"
   },
