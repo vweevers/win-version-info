@@ -33,3 +33,15 @@ test('versions', function (t) {
     }), 'info ok')
   })
 })
+
+test('utf-8', function (t) {
+  t.plan(2)
+
+  gen({ copyright: '© Beep 嘟 Inc.' }, function (err, exe) {
+    t.ifError(err, 'no gen error')
+
+    t.same(vi(exe), xtend(dummyDefaults, {
+      LegalCopyright: '© Beep 嘟 Inc.'
+    }), 'info ok')
+  })
+})

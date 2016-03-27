@@ -18,9 +18,10 @@ module.exports = function(values, opts, done) {
 
       var dir = tmp()
       var exe = dir + '\\dummy.exe'
-      var args = ['/nologo', '/print-', 'dummy.js']
+      var args = ['/nologo', '/print-', '/utf8output', 'dummy.js']
 
-      fs.writeFile(dir + '\\dummy.js', code, function (err) {
+      // The jsc compiler needs a BOM to read the source as UTF-8
+      fs.writeFile(dir + '\\dummy.js', '\ufeff' + code, function (err) {
         if (err) return done(err)
 
         var child = execFile(bin, args, { cwd: dir }, function(err) {
