@@ -41,4 +41,4 @@ void Init(v8::Local<v8::Object> exports, v8::Local<v8::Object> module) {
       Nan::New<v8::FunctionTemplate>(CreateObject)->GetFunction());
 }
 
-NODE_MODULE(addon, Init)
+NODE_MODULE(VersionInfo, Init)
