@@ -39,34 +39,6 @@ using namespace utf8util;
 
 // ----------------------------------------------------------------------------
 
-static inline bool isVersionKey(std::string &k) {
-	return k == "FileVersion" || k == "ProductVersion";
-}
-
-static inline bool isEmptyVersion(std::string &v) {
-	return v == "0.0.0.0" || v == "0.0.0" || v == "0.0" || v == "0";
-}
-
-// ----------------------------------------------------------------------------
-
-void ReadFixedFileInfo(VS_FIXEDFILEINFO* pValue, v8::Local<v8::Object> &metadata) {
-	// major.minor.patch.revision
-	std::ostringstream v;
-	v << (pValue->dwFileVersionMS >> 16) << ".";
-	v << (pValue->dwFileVersionMS & 0xFFFF) << ".";
-	v << (pValue->dwFileVersionLS >> 16) << ".";
-	v << (pValue->dwFileVersionLS & 0xFFFF);
-
-	std::string version = v.str();
-
-	if (version != "0.0.0.0") {
-		metadata->Set(
-			Nan::New("FileVersion").ToLocalChecked(),
-			Nan::New(version).ToLocalChecked()
-		);
-	}
-}
-
 struct VS_VERSIONINFO {
   WORD  wLength;
   WORD  wValueLength;
@@ -123,6 +95,16 @@ struct VarFileInfo {
   Var   Children[1];
 };
 
+// ----------------------------------------------------------------------------
+
+static inline bool isVersionKey(std::string &k) {
+	return k == "FileVersion" || k == "ProductVersion";
+}
+
+static inline bool isEmptyVersion(std::string &v) {
+	return v == "0.0.0.0" || v == "0.0.0" || v == "0.0" || v == "0";
+}
+
 // http://stackoverflow.com/a/217605 ------------------------------------------
 
 static inline void ltrim(std::string &s) {
@@ -139,6 +121,24 @@ static inline void trim(std::string &s) {
 }
 
 // ----------------------------------------------------------------------------
+
+void ReadFixedFileInfo(VS_FIXEDFILEINFO* pValue, v8::Local<v8::Object> &metadata) {
+	// major.minor.patch.revision
+	std::ostringstream v;
+	v << (pValue->dwFileVersionMS >> 16) << ".";
+	v << (pValue->dwFileVersionMS & 0xFFFF) << ".";
+	v << (pValue->dwFileVersionLS >> 16) << ".";
+	v << (pValue->dwFileVersionLS & 0xFFFF);
+
+	std::string version = v.str();
+
+	if (version != "0.0.0.0") {
+		metadata->Set(
+			Nan::New("FileVersion").ToLocalChecked(),
+			Nan::New(version).ToLocalChecked()
+		);
+	}
+}
 
 void SetUTF16Pair(wchar_t *key, wchar_t *value, v8::Local<v8::Object> &metadata) {
   std::string utf8Key = UTF8FromUTF16(key);
