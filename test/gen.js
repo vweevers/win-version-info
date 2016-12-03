@@ -7,35 +7,33 @@ var execFile = require('child_process').execFile
   , access = typeof fs.access === 'function' ? fs.access : fs.stat
 
 module.exports = function(values, opts, done) {
-  if (typeof opts === 'function') done = opts, opts = {}
+  if (typeof values === 'function') done = values, opts = {}, values = {}
+  else if (typeof opts === 'function') done = opts, opts = {}
   else if (!opts) opts = {}
 
   findBin(function (err, bin) {
     if (err) return done(err)
 
-    generateAssembly(values, function (err, code) {
+    var code = generateAssembly(values)
+    var dir = tmp()
+    var exe = dir + '\\dummy.exe'
+    var args = ['/nologo', '/print-', '/utf8output', 'dummy.js']
+
+    // The jsc compiler needs a BOM to read the source as UTF-8
+    fs.writeFile(dir + '\\dummy.js', '\ufeff' + code, function (err) {
       if (err) return done(err)
 
-      var dir = tmp()
-      var exe = dir + '\\dummy.exe'
-      var args = ['/nologo', '/print-', '/utf8output', 'dummy.js']
-
-      // The jsc compiler needs a BOM to read the source as UTF-8
-      fs.writeFile(dir + '\\dummy.js', '\ufeff' + code, function (err) {
+      var child = execFile(bin, args, { cwd: dir }, function(err) {
         if (err) return done(err)
 
-        var child = execFile(bin, args, { cwd: dir }, function(err) {
-          if (err) return done(err)
-
-          // Make sure the executable exists
-          access(exe, function (err) {
-            if (err) done(err)
-            else done(null, exe)
-          })
+        // Make sure the executable exists
+        access(exe, function (err) {
+          if (err) done(err)
+          else done(null, exe)
         })
-
-        if (opts.debug) child.stderr.pipe(process.stderr)
       })
+
+      if (opts.debug) child.stderr.pipe(process.stderr)
     })
   })
 }
@@ -55,7 +53,7 @@ function findBin(cb) {
   })
 }
 
-function generateAssembly(values, done) {
+function generateAssembly(values) {
   // See https://msdn.microsoft.com/en-us/library/system.reflection(v=vs.110).aspx
   var code = []
 
@@ -92,8 +90,9 @@ function generateAssembly(values, done) {
     code.push('[assembly: ' + fn + '(' + json + ')]')
   })
 
-  if (!code.length) return done(new Error('No attributes given'))
+  if (code.length) {
+    code.unshift('import System.Reflection;')
+  }
 
-  code.unshift('import System.Reflection;')
-  return done(null, code.join('\n'))
+  return code.join('\n')
 }
