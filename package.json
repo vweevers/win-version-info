@@ -4,8 +4,13 @@
   "description": "Windows-only native addon to read version info from executables",
   "license": "MIT",
   "main": "index.js",
+  "bin": {
+    "win-version-info": "bin.js",
+    "version-info": "bin.js"
+  },
   "author": "Vincent Weevers",
   "files": [
+    "bin.js",
     "index.js",
     "binding.gyp",
     "src",
