@@ -4,7 +4,6 @@ var test = require('tape')
   , vi = require('../')
 
 var dummyDefaults = {
-  FileVersion: '0.0.0.0',
   InternalName: 'dummy.exe',
   OriginalFilename: 'dummy.exe'
 }
@@ -18,6 +17,38 @@ test('company', function (t) {
     t.same(vi(exe), xtend(dummyDefaults, {
       CompanyName: 'beep',
     }), 'info ok')
+  })
+})
+
+test('trims values', function (t) {
+  t.plan(2)
+
+  gen({ company: '  beep   ' }, function (err, exe) {
+    t.ifError(err, 'no gen error')
+
+    t.same(vi(exe), xtend(dummyDefaults, {
+      CompanyName: 'beep',
+    }), 'info ok')
+  })
+})
+
+test('ignores version 0', function (t) {
+  t.plan(4)
+
+  gen({ fileVersion: '0.0.0.0', productVersion: '2.0' }, function (err, exe) {
+    t.ifError(err, 'no gen error (1)')
+
+    t.same(vi(exe), xtend(dummyDefaults, {
+      ProductVersion: '2.0'
+    }), 'info ok (1)')
+  })
+
+  gen({ fileVersion: '1.0.0.1', productVersion: '0.0' }, function (err, exe) {
+    t.ifError(err, 'no gen error (1)')
+
+    t.same(vi(exe), xtend(dummyDefaults, {
+      FileVersion: '1.0.0.1'
+    }), 'info ok (1)')
   })
 })
 
@@ -35,13 +66,29 @@ test('versions', function (t) {
 })
 
 test('utf-8', function (t) {
-  t.plan(2)
+  t.plan(6)
 
   gen({ copyright: '© Beep 嘟 Inc.' }, function (err, exe) {
     t.ifError(err, 'no gen error')
 
     t.same(vi(exe), xtend(dummyDefaults, {
       LegalCopyright: '© Beep 嘟 Inc.'
+    }), 'info ok')
+  })
+
+  gen({ company: '   © Beep 嘟 Inc.  ' }, function (err, exe) {
+    t.ifError(err, 'no gen error')
+
+    t.same(vi(exe), xtend(dummyDefaults, {
+      CompanyName: '© Beep 嘟 Inc.'
+    }), 'info ok')
+  })
+
+  gen({ description: '  嘟© Beep 嘟 Inc.嘟' }, function (err, exe) {
+    t.ifError(err, 'no gen error')
+
+    t.same(vi(exe), xtend(dummyDefaults, {
+      FileDescription: '嘟© Beep 嘟 Inc.嘟'
     }), 'info ok')
   })
 })

@@ -18,6 +18,11 @@
 #include <nan.h>
 #include <utf8conv.h>
 
+#include <algorithm>
+#include <functional>
+#include <cctype>
+#include <locale>
+
 #define WIN32_LEAN_AND_MEAN		// Exclude rarely-used stuff from Windows headers
 #include <windows.h>
 
@@ -34,6 +39,16 @@ using namespace utf8util;
 
 // ----------------------------------------------------------------------------
 
+static inline bool isVersionKey(std::string &k) {
+	return k == "FileVersion" || k == "ProductVersion";
+}
+
+static inline bool isEmptyVersion(std::string &v) {
+	return v == "0.0.0.0" || v == "0.0.0" || v == "0.0" || v == "0";
+}
+
+// ----------------------------------------------------------------------------
+
 void ReadFixedFileInfo(VS_FIXEDFILEINFO* pValue, v8::Local<v8::Object> &metadata) {
 	// major.minor.patch.revision
 	std::ostringstream v;
@@ -42,13 +57,15 @@ void ReadFixedFileInfo(VS_FIXEDFILEINFO* pValue, v8::Local<v8::Object> &metadata
 	v << (pValue->dwFileVersionLS >> 16) << ".";
 	v << (pValue->dwFileVersionLS & 0xFFFF);
 
-  metadata->Set(
-		Nan::New("FileVersion").ToLocalChecked(),
-		Nan::New(v.str()).ToLocalChecked()
-	);
-}
+	std::string version = v.str();
 
-// ----------------------------------------------------------------------------
+	if (version != "0.0.0.0") {
+		metadata->Set(
+			Nan::New("FileVersion").ToLocalChecked(),
+			Nan::New(version).ToLocalChecked()
+		);
+	}
+}
 
 struct VS_VERSIONINFO {
   WORD  wLength;
@@ -106,15 +123,35 @@ struct VarFileInfo {
   Var   Children[1];
 };
 
+// http://stackoverflow.com/a/217605 ------------------------------------------
+
+static inline void ltrim(std::string &s) {
+  s.erase(s.begin(), std::find_if(s.begin(), s.end(), std::not1(std::ptr_fun<int, int>(std::isspace))));
+}
+
+static inline void rtrim(std::string &s) {
+  s.erase(std::find_if(s.rbegin(), s.rend(), std::not1(std::ptr_fun<int, int>(std::isspace))).base(), s.end());
+}
+
+static inline void trim(std::string &s) {
+  ltrim(s);
+  rtrim(s);
+}
+
 // ----------------------------------------------------------------------------
 
 void SetUTF16Pair(wchar_t *key, wchar_t *value, v8::Local<v8::Object> &metadata) {
   std::string utf8Key = UTF8FromUTF16(key);
   std::string utf8Val = UTF8FromUTF16(value);
 
+	trim(utf8Val);
+
+	if (utf8Val == "") return;
+	if (isVersionKey(utf8Key) && isEmptyVersion(utf8Val)) return;
+
 	v8::Local<v8::String> k = Nan::New(utf8Key).ToLocalChecked();
 
-	if (!metadata->Has(k) && utf8Val != "" && utf8Val != " ") {
+	if (!metadata->Has(k)) {
 		metadata->Set(k, Nan::New(utf8Val).ToLocalChecked());
 	}
 }
