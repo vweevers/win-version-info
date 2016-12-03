@@ -33,6 +33,16 @@ With [npm](https://npmjs.org) do:
 npm install win-version-info
 ```
 
+## changelog
+
+### 2.0.0-beta1
+
+- Drop Node < 4 support
+- Trim values
+- Ignore empty values and `0.0.0.0` versions
+- Prebuilds for Node 4 - 7
+- Add CLI
+
 ## license
 
 [MIT](https://spdx.org/licenses/MIT.html) © Vincent Weevers.
