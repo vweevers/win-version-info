@@ -1,6 +1,8 @@
-var test = require('tape')
-  , gen = require('./gen')
-  , vi = require('../')
+'use strict'
+
+const test = require('tape')
+const gen = require('win-dummy-exe')
+const vi = require('..')
 
 test('memory usage', function (t) {
   t.plan(2)
@@ -9,7 +11,7 @@ test('memory usage', function (t) {
   var TOTAL = 2e5
   var STEP = 1e4
 
-  gen({ company: company }, function (err, exe) {
+  gen({ assemblyCompany: company }, function (err, exe) {
     t.ifError(err, 'no gen error')
 
     var n = 0

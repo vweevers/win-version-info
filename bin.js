@@ -1,8 +1,8 @@
 #!/usr/bin/env node
-'use strict';
+'use strict'
 
-const vi = require('./')
-    , files = process.argv.slice(2)
+const vi = require('.')
+const files = process.argv.slice(2)
 
 if (!files.length) {
   console.error('usage: version-info <file>, ..')

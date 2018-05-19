@@ -31,9 +31,8 @@
     "prebuild": "~4.5.0"
   },
   "devDependencies": {
-    "glob": "~7.1.1",
-    "tape": "~4.6.3",
-    "tmpgen": "~1.1.1",
+    "tape": "~4.9.0",
+    "win-dummy-exe": "0.0.1",
     "xtend": "~4.0.1"
   },
   "keywords": [

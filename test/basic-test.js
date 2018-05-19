@@ -1,7 +1,9 @@
-var test = require('tape')
-  , xtend = require('xtend')
-  , gen = require('./gen')
-  , vi = require('../')
+'use strict'
+
+const test = require('tape')
+const xtend = require('xtend')
+const gen = require('win-dummy-exe')
+const vi = require('..')
 
 var dummyDefaults = {
   InternalName: 'dummy.exe',
@@ -11,7 +13,7 @@ var dummyDefaults = {
 test('company', function (t) {
   t.plan(2)
 
-  gen({ company: 'beep' }, function (err, exe) {
+  gen({ assemblyCompany: 'beep' }, function (err, exe) {
     t.ifError(err, 'no gen error')
 
     t.same(vi(exe), xtend(dummyDefaults, {
@@ -23,7 +25,7 @@ test('company', function (t) {
 test('trims values', function (t) {
   t.plan(2)
 
-  gen({ company: '  beep   ' }, function (err, exe) {
+  gen({ assemblyCompany: '  beep   ' }, function (err, exe) {
     t.ifError(err, 'no gen error')
 
     t.same(vi(exe), xtend(dummyDefaults, {
@@ -35,7 +37,7 @@ test('trims values', function (t) {
 test('ignores version 0', function (t) {
   t.plan(4)
 
-  gen({ fileVersion: '0.0.0.0', productVersion: '2.0' }, function (err, exe) {
+  gen({ assemblyFileVersion: '0.0.0.0', assemblyInformationalVersion: '2.0' }, function (err, exe) {
     t.ifError(err, 'no gen error (1)')
 
     t.same(vi(exe), xtend(dummyDefaults, {
@@ -43,7 +45,7 @@ test('ignores version 0', function (t) {
     }), 'info ok (1)')
   })
 
-  gen({ fileVersion: '1.0.0.1', productVersion: '0.0' }, function (err, exe) {
+  gen({ assemblyFileVersion: '1.0.0.1', assemblyInformationalVersion: '0.0' }, function (err, exe) {
     t.ifError(err, 'no gen error (1)')
 
     t.same(vi(exe), xtend(dummyDefaults, {
@@ -55,7 +57,7 @@ test('ignores version 0', function (t) {
 test('versions', function (t) {
   t.plan(2)
 
-  gen({ fileVersion: '2.0.0.2', productVersion: '2.0b' }, function (err, exe) {
+  gen({ assemblyFileVersion: '2.0.0.2', assemblyInformationalVersion: '2.0b' }, function (err, exe) {
     t.ifError(err, 'no gen error')
 
     t.same(vi(exe), xtend(dummyDefaults, {
@@ -68,7 +70,7 @@ test('versions', function (t) {
 test('utf-8', function (t) {
   t.plan(6)
 
-  gen({ copyright: '© Beep 嘟 Inc.' }, function (err, exe) {
+  gen({ assemblyCopyright: '© Beep 嘟 Inc.' }, function (err, exe) {
     t.ifError(err, 'no gen error')
 
     t.same(vi(exe), xtend(dummyDefaults, {
@@ -76,7 +78,7 @@ test('utf-8', function (t) {
     }), 'info ok')
   })
 
-  gen({ company: '   © Beep 嘟 Inc.  ' }, function (err, exe) {
+  gen({ assemblyCompany: '   © Beep 嘟 Inc.  ' }, function (err, exe) {
     t.ifError(err, 'no gen error')
 
     t.same(vi(exe), xtend(dummyDefaults, {
@@ -84,7 +86,7 @@ test('utf-8', function (t) {
     }), 'info ok')
   })
 
-  gen({ description: '  嘟© Beep 嘟 Inc.嘟' }, function (err, exe) {
+  gen({ assemblyTitle: '  嘟© Beep 嘟 Inc.嘟' }, function (err, exe) {
     t.ifError(err, 'no gen error')
 
     t.same(vi(exe), xtend(dummyDefaults, {
