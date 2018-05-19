@@ -1,10 +1,9 @@
 version: "{build}"
 build: off
-shallow_clone: true
 skip_tags: false
 
 environment:
-  gh_token:
+  PREBUILD_TOKEN:
     secure: 2wpMgpk8uexn8fsbGLlwCBWPy9R091m1XmpYNr9Q+SMFsVOYwMTdk242ggjUKa/0
   matrix:
     - nodejs_version: "4"
@@ -18,15 +17,8 @@ platform:
 
 install:
   - ps: Install-Product node $env:nodejs_version $env:platform
-  - npm -g i npm@latest
   - set PATH=%APPDATA%\npm;%APPVEYOR_BUILD_FOLDER%\node_modules\.bin;%PATH%
-  - npm i --ignore-scripts
-  - for /f %%i in ('node -v') do set exact_nodejs_version=%%i
-  - prebuild -b %exact_nodejs_version% --strip
+  - npm i
 
 test_script:
   - npm test
-
-on_success:
-  - for %%i in (prebuilds\*) do appveyor PushArtifact %%i
-  - if %APPVEYOR_REPO_TAG%==true prebuild --upload-all %gh_token%
