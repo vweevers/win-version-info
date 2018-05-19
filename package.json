@@ -46,8 +46,7 @@
     "windows"
   ],
   "engines": {
-    "node": ">=0.10.0",
-    "npm": ">=2.0.0"
+    "node": ">=6"
   },
   "gypfile": true,
   "repository": "vweevers/win-version-info",

@@ -6,10 +6,10 @@ environment:
   PREBUILD_TOKEN:
     secure: 2wpMgpk8uexn8fsbGLlwCBWPy9R091m1XmpYNr9Q+SMFsVOYwMTdk242ggjUKa/0
   matrix:
-    - nodejs_version: "4"
-    - nodejs_version: "5"
     - nodejs_version: "6"
-    - nodejs_version: "7"
+    - nodejs_version: "8"
+    - nodejs_version: "9"
+    - nodejs_version: "10"
 
 platform:
   - x86

@@ -35,6 +35,11 @@ npm install win-version-info
 
 ## changelog
 
+### 2.0.0
+
+- Drop Node 4, 5 and 7
+- Add prebuilds for Node 8, 9 and 10
+
 ### 2.0.0-beta1
 
 - Drop Node < 4 support
