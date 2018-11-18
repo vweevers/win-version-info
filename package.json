@@ -18,7 +18,7 @@
     "deps"
   ],
   "scripts": {
-    "test": "tape test/*-test.js && prebuild-ci",
+    "test": "standard && tape test/*-test.js && prebuild-ci",
     "install": "node skip.js || prebuild-install || node-gyp rebuild",
     "rebuild": "prebuild --compile"
   },
@@ -30,6 +30,7 @@
   "devDependencies": {
     "prebuild": "~7.6.0",
     "prebuild-ci": "~2.2.3",
+    "standard": "~12.0.1",
     "tape": "~4.9.0",
     "win-dummy-exe": "0.0.1",
     "xtend": "~4.0.1"

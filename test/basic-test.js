@@ -24,7 +24,7 @@ if (process.platform !== 'win32') {
       t.ifError(err, 'no gen error')
 
       t.same(vi(exe), xtend(dummyDefaults, {
-        CompanyName: 'beep',
+        CompanyName: 'beep'
       }), 'info ok')
     })
   })
@@ -36,7 +36,7 @@ if (process.platform !== 'win32') {
       t.ifError(err, 'no gen error')
 
       t.same(vi(exe), xtend(dummyDefaults, {
-        CompanyName: 'beep',
+        CompanyName: 'beep'
       }), 'info ok')
     })
   })
@@ -111,10 +111,10 @@ if (process.platform !== 'win32') {
     throws('win-version-info requires a string filename, got: undefined')
     throws('win-version-info requires a string filename, got: boolean', true)
 
-    function throws(message, input) {
+    function throws (message, input) {
       try {
         vi(input)
-      } catch(err) {
+      } catch (err) {
         t.is(err.message, message, 'throws')
       }
     }
@@ -127,7 +127,7 @@ if (process.platform !== 'win32') {
 
     try {
       info()
-    } catch(err) {
+    } catch (err) {
       t.is(err.message, 'win-version-info requires a string filename', 'throws')
     }
   })
