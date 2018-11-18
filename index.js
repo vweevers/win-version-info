@@ -1,7 +1,8 @@
-'use strict';
+'use strict'
 
 var resolve = require('path').resolve
-  , info = require('bindings')('VersionInfo')
+var isWindows = process.platform === 'win32'
+var info = isWindows ? require('bindings')('VersionInfo') : null
 
 module.exports = function (file) {
   if (typeof file !== 'string') {
@@ -13,5 +14,5 @@ module.exports = function (file) {
     throw new Error('win-version-info requires a non-empty string filename')
   }
 
-  return info(resolve(file))
+  return isWindows ? info(resolve(file)) : {}
 }
