@@ -42,6 +42,9 @@ npm install win-version-info
 
 - Remove (need for) `os` filter in `package.json`
 - Add `standard`
+- Update `nan` from `~2.10.0` to `~2.11.1`
+- Update `prebuild-install` from `~4.0.0` to `~5.2.1`
+- Update `prebuild` devDependency from `~7.6.0` to `~8.1.2`
 
 ### 2.0.0
 
