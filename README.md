@@ -1,6 +1,6 @@
 # win-version-info
 
-**Windows-only native addon to read version info from executables.**
+**Windows-only native addon to read version info from executables. A noop on other platforms.**
 
 [![npm status](http://img.shields.io/npm/v/win-version-info.svg?style=flat-square)](https://www.npmjs.org/package/win-version-info) [![AppVeyor build status](https://img.shields.io/appveyor/ci/vweevers/win-version-info.svg?style=flat-square&label=appveyor)](https://ci.appveyor.com/project/vweevers/win-version-info) [![Dependency status](https://img.shields.io/david/vweevers/win-version-info.svg?style=flat-square)](https://david-dm.org/vweevers/win-version-info)
 
@@ -34,6 +34,10 @@ npm install win-version-info
 ```
 
 ## Changelog
+
+### 2.1.0
+
+- Remove (need for) `os` filter in `package.json`
 
 ### 2.0.0
 
