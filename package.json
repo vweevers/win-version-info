@@ -12,13 +12,14 @@
   "files": [
     "bin.js",
     "index.js",
+    "skip.js",
     "binding.gyp",
     "src",
     "deps"
   ],
   "scripts": {
     "test": "tape test/*-test.js && prebuild-ci",
-    "install": "prebuild-install || node-gyp rebuild",
+    "install": "node skip.js || prebuild-install || node-gyp rebuild",
     "rebuild": "prebuild --compile"
   },
   "dependencies": {
