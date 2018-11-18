@@ -16,9 +16,6 @@
     "src",
     "deps"
   ],
-  "os": [
-    "win32"
-  ],
   "scripts": {
     "test": "tape test/*-test.js && prebuild-ci",
     "install": "prebuild-install || node-gyp rebuild",
