@@ -2,9 +2,9 @@
 
 **Windows-only native addon to read version info from executables. A noop on other platforms.**
 
-[![npm status](http://img.shields.io/npm/v/win-version-info.svg?style=flat-square)](https://www.npmjs.org/package/win-version-info)
-[![AppVeyor build status](https://img.shields.io/appveyor/ci/vweevers/win-version-info.svg?style=flat-square&label=appveyor)](https://ci.appveyor.com/project/vweevers/win-version-info)
-[![Dependency status](https://img.shields.io/david/vweevers/win-version-info.svg?style=flat-square)](https://david-dm.org/vweevers/win-version-info)
+[![npm status](http://img.shields.io/npm/v/win-version-info.svg)](https://www.npmjs.org/package/win-version-info)
+[![AppVeyor build status](https://img.shields.io/appveyor/ci/vweevers/win-version-info.svg?label=appveyor)](https://ci.appveyor.com/project/vweevers/win-version-info)
+[![Dependency status](https://img.shields.io/david/vweevers/win-version-info.svg)](https://david-dm.org/vweevers/win-version-info)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Example
@@ -61,10 +61,4 @@ npm install win-version-info
 
 ## License
 
-[MIT](./LICENSE) © 2016-present Vincent Weevers.
-
-## Acknowledgements
-
-- The main body of this project comes from [ShowVer](http://www.codeproject.com/Articles/2457/ShowVer-exe-command-line-VERSIONINFO-display-progr) © Ted Peck 2002
-- Converting between UTF-16 and UTF-8 made possible by  [UTF8Conversion](https://code.msdn.microsoft.com/C-UTF-8-Conversion-Helpers-22c0a664) ([Apache License 2.0](http://spdx.org/licenses/Apache-2.0.html)) © 2011 Giovanni Dicanio
-- For getting me started with addon development: [node-native-boilerplate](https://github.com/fcanas/node-native-boilerplate) © 2015 Fabian Canas
+[MIT](./LICENSE) © 2016-present Vincent Weevers. The main body of this project comes from [ShowVer](http://www.codeproject.com/Articles/2457/ShowVer-exe-command-line-VERSIONINFO-display-progr) © Ted Peck 2002. Converting between UTF-16 and UTF-8 made possible by [UTF8Conversion](https://code.msdn.microsoft.com/C-UTF-8-Conversion-Helpers-22c0a664) ([Apache License 2.0](http://spdx.org/licenses/Apache-2.0.html)) © 2011 Giovanni Dicanio.
