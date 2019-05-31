@@ -2,7 +2,7 @@
 
 var resolve = require('path').resolve
 var isWindows = process.platform === 'win32'
-var info = isWindows ? require('bindings')('VersionInfo') : null
+var info = isWindows ? require('bindings')('VersionInfo').getInfo : null
 
 module.exports = function (file) {
   if (typeof file !== 'string') {

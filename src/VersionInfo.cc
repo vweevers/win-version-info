@@ -6,7 +6,7 @@
 using namespace std;
 using namespace utf8util;
 
-void CreateObject(const Nan::FunctionCallbackInfo<v8::Value>& info) {
+NAN_METHOD(getInfo) {
   if (!info[0]->IsString()) {
     return Nan::ThrowError("win-version-info requires a string filename");
   }
@@ -36,9 +36,8 @@ void CreateObject(const Nan::FunctionCallbackInfo<v8::Value>& info) {
   info.GetReturnValue().Set(metadata);
 }
 
-void Init(v8::Local<v8::Object> exports, v8::Local<v8::Object> module) {
-  module->Set(Nan::New("exports").ToLocalChecked(),
-      Nan::New<v8::FunctionTemplate>(CreateObject)->GetFunction());
+NAN_MODULE_INIT(Init) {
+  NAN_EXPORT(target, getInfo);
 }
 
 NODE_MODULE(VersionInfo, Init)

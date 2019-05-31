@@ -121,7 +121,7 @@ if (process.platform !== 'win32') {
   })
 
   test('binding throws on non-string', function (t) {
-    var info = require('bindings')('VersionInfo')
+    var info = require('bindings')('VersionInfo').getInfo
 
     t.plan(1)
 

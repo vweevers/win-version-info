@@ -133,7 +133,8 @@ void ReadFixedFileInfo(VS_FIXEDFILEINFO* pValue, v8::Local<v8::Object> &metadata
 	std::string version = v.str();
 
 	if (version != "0.0.0.0") {
-		metadata->Set(
+		Nan::Set(
+      metadata,
 			Nan::New("FileVersion").ToLocalChecked(),
 			Nan::New(version).ToLocalChecked()
 		);
@@ -150,10 +151,7 @@ void SetUTF16Pair(wchar_t *key, wchar_t *value, v8::Local<v8::Object> &metadata)
 	if (isVersionKey(utf8Key) && isEmptyVersion(utf8Val)) return;
 
 	v8::Local<v8::String> k = Nan::New(utf8Key).ToLocalChecked();
-
-	if (!metadata->Has(k)) {
-		metadata->Set(k, Nan::New(utf8Val).ToLocalChecked());
-	}
+  Nan::Set(metadata, k, Nan::New(utf8Val).ToLocalChecked());
 }
 
 void ReadFileInfo(void* pVer, DWORD size, v8::Local<v8::Object> &metadata) {
