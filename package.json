@@ -24,12 +24,12 @@
   },
   "dependencies": {
     "bindings": "~1.5.0",
-    "nan": "~2.13.2",
-    "prebuild-install": "~5.2.1"
+    "nan": "~2.14.0",
+    "prebuild-install": "~5.3.0"
   },
   "devDependencies": {
     "prebuild": "~8.2.1",
-    "prebuild-ci": "~2.3.0",
+    "prebuild-ci": "~3.0.0",
     "standard": "~12.0.1",
     "tape": "~4.10.1",
     "win-dummy-exe": "0.0.1",
