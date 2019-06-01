@@ -4,6 +4,26 @@ _**If you are upgrading:** please see [`UPGRADING.md`](UPGRADING.md)._
 
 ## [Unreleased][unreleased]
 
+## [3.0.0] - 2019-06-01
+
+### Changed
+
+- Update dependencies to enable Greenkeeper ([#3](https://github.com/vweevers/win-version-info/issues/3))
+- Move changelog to `CHANGELOG.md` ([`7e3bb93`](https://github.com/vweevers/win-version-info/commit/7e3bb93))
+- Tweak `README.md` ([`8b37083`](https://github.com/vweevers/win-version-info/commit/8b37083))
+
+### Added
+
+- Enable prebuilding for Node 12 ([`8307488`](https://github.com/vweevers/win-version-info/commit/8307488), [`e4f620e`](https://github.com/vweevers/win-version-info/commit/e4f620e)) ([#5](https://github.com/vweevers/win-version-info/issues/5)) ([**@pimterry**](https://github.com/pimterry))
+
+### Removed
+
+- Drop node 6 and 9 ([`560c955`](https://github.com/vweevers/win-version-info/commit/560c955)) ([#5](https://github.com/vweevers/win-version-info/issues/5))
+
+### Fixed
+
+- Fix node 12 ([`16c0004`](https://github.com/vweevers/win-version-info/commit/16c0004)) ([#5](https://github.com/vweevers/win-version-info/issues/5))
+
 ## [2.1.0] - 2018-11-18
 
 ### Changed
