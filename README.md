@@ -36,29 +36,6 @@ With [npm](https://npmjs.org) do:
 npm install win-version-info
 ```
 
-## Changelog
-
-### 2.1.0
-
-- Remove (need for) `os` filter in `package.json`
-- Add `standard`
-- Update `nan` from `~2.10.0` to `~2.11.1`
-- Update `prebuild-install` from `~4.0.0` to `~5.2.1`
-- Update `prebuild` devDependency from `~7.6.0` to `~8.1.2`
-
-### 2.0.0
-
-- Drop Node 4, 5 and 7
-- Add prebuilds for Node 8, 9 and 10
-
-### 2.0.0-beta1
-
-- Drop Node < 4 support
-- Trim values
-- Ignore empty values and `0.0.0.0` versions
-- Prebuilds for Node 4 - 7
-- Add CLI
-
 ## License
 
 [MIT](./LICENSE) © 2016-present Vincent Weevers. The main body of this project comes from [ShowVer](http://www.codeproject.com/Articles/2457/ShowVer-exe-command-line-VERSIONINFO-display-progr) © Ted Peck 2002. Converting between UTF-16 and UTF-8 made possible by [UTF8Conversion](https://code.msdn.microsoft.com/C-UTF-8-Conversion-Helpers-22c0a664) ([Apache License 2.0](http://spdx.org/licenses/Apache-2.0.html)) © 2011 Giovanni Dicanio.
