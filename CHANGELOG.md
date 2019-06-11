@@ -4,6 +4,16 @@ _**If you are upgrading:** please see [`UPGRADING.md`](UPGRADING.md)._
 
 ## [Unreleased][unreleased]
 
+## [3.0.1] - 2019-06-11
+
+### Changed
+
+- Upgrade `prebuild` from `^8.2.1` to `^9.0.0` ([#6](https://github.com/vweevers/win-version-info/issues/6))
+
+### Fixed
+
+- Don't skip building if cross-compiling ([#7](https://github.com/vweevers/win-version-info/issues/7)) ([**@pimterry**](https://github.com/pimterry))
+
 ## [3.0.0] - 2019-06-01
 
 ### Changed
@@ -73,7 +83,9 @@ _**If you are upgrading:** please see [`UPGRADING.md`](UPGRADING.md)._
 
 :seedling: Initial release.
 
-[unreleased]: https://github.com/vweevers/win-version-info/compare/v3.0.0...HEAD
+[unreleased]: https://github.com/vweevers/win-version-info/compare/v3.0.1...HEAD
+
+[3.0.1]: https://github.com/vweevers/win-version-info/compare/v3.0.0...v3.0.1
 
 [3.0.0]: https://github.com/vweevers/win-version-info/compare/v2.1.0...v3.0.0
 
