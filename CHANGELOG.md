@@ -2,8 +2,6 @@
 
 _**If you are upgrading:** please see [`UPGRADING.md`](UPGRADING.md)._
 
-## [Unreleased][unreleased]
-
 ## [3.0.1] - 2019-06-11
 
 ### Changed
@@ -82,8 +80,6 @@ _**If you are upgrading:** please see [`UPGRADING.md`](UPGRADING.md)._
 ## 1.0.0 - 2016-03-27
 
 :seedling: Initial release.
-
-[unreleased]: https://github.com/vweevers/win-version-info/compare/v3.0.1...HEAD
 
 [3.0.1]: https://github.com/vweevers/win-version-info/compare/v3.0.0...v3.0.1
 
