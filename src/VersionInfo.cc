@@ -40,4 +40,6 @@ NAN_MODULE_INIT(Init) {
   NAN_EXPORT(target, getInfo);
 }
 
-NODE_MODULE(VersionInfo, Init)
+NODE_MODULE_INIT() {
+  Init(exports);
+}
