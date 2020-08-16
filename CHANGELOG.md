@@ -2,6 +2,12 @@
 
 _**If you are upgrading:** please see [`UPGRADING.md`](UPGRADING.md)._
 
+## [3.1.1] - 2020-08-16
+
+### Fixed
+
+- Move `PREBUILD_TOKEN` to AppVeyor ([`a53a1ef`](https://github.com/vweevers/win-version-info/commit/a53a1ef)) ([**@vweevers**](https://github.com/vweevers))
+
 ## [3.1.0] - 2020-08-16
 
 ### Changed
@@ -94,6 +100,8 @@ _**If you are upgrading:** please see [`UPGRADING.md`](UPGRADING.md)._
 ## 1.0.0 - 2016-03-27
 
 :seedling: Initial release.
+
+[3.1.1]: https://github.com/vweevers/win-version-info/compare/v3.1.0...v3.1.1
 
 [3.1.0]: https://github.com/vweevers/win-version-info/compare/v3.0.1...v3.1.0
 
