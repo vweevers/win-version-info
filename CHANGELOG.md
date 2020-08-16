@@ -2,6 +2,20 @@
 
 _**If you are upgrading:** please see [`UPGRADING.md`](UPGRADING.md)._
 
+## [3.1.0] - 2020-08-16
+
+### Changed
+
+- Unlock dependencies ([`0424fbc`](https://github.com/vweevers/win-version-info/commit/0424fbc)) ([**@vweevers**](https://github.com/vweevers))
+- Upgrade `prebuild` devDependency from `^9.0.0` to `^10.0.0` ([`e0f7d5f`](https://github.com/vweevers/win-version-info/commit/e0f7d5f)) ([**@vweevers**](https://github.com/vweevers))
+- Upgrade `tape` devDependency from `^4.10.1` to `^5.0.0` ([#15](https://github.com/vweevers/win-version-info/issues/15)) ([**@vweevers**](https://github.com/vweevers))
+- Upgrade `hallmark` devDependency from `^0.1.0` to `^2.0.0` ([#9](https://github.com/vweevers/win-version-info/issues/9), [#12](https://github.com/vweevers/win-version-info/issues/12)) ([**@vweevers**](https://github.com/vweevers))
+- Upgrade `standard` devDependency from `^12.0.1` to `^14.0.0` ([#8](https://github.com/vweevers/win-version-info/issues/8), [#11](https://github.com/vweevers/win-version-info/issues/11)) ([**@vweevers**](https://github.com/vweevers))
+
+### Added
+
+- Build for Node 14 ([#16](https://github.com/vweevers/win-version-info/issues/16)) ([`4219f68`](https://github.com/vweevers/win-version-info/commit/4219f68)) ([**@pimterry**](https://github.com/pimterry))
+
 ## [3.0.1] - 2019-06-11
 
 ### Changed
@@ -80,6 +94,8 @@ _**If you are upgrading:** please see [`UPGRADING.md`](UPGRADING.md)._
 ## 1.0.0 - 2016-03-27
 
 :seedling: Initial release.
+
+[3.1.0]: https://github.com/vweevers/win-version-info/compare/v3.0.1...v3.1.0
 
 [3.0.1]: https://github.com/vweevers/win-version-info/compare/v3.0.0...v3.0.1
 
