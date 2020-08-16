@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "hallmark": "^2.0.0",
-    "prebuild": "^9.0.0",
+    "prebuild": "^10.0.0",
     "prebuild-ci": "^3.0.0",
     "standard": "^14.0.0",
     "tape": "^5.0.0",
