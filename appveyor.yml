@@ -3,8 +3,6 @@ build: off
 skip_tags: false
 
 environment:
-  PREBUILD_TOKEN:
-    secure: 2wpMgpk8uexn8fsbGLlwCBWPy9R091m1XmpYNr9Q+SMFsVOYwMTdk242ggjUKa/0
   matrix:
     - nodejs_version: "8"
     - nodejs_version: "10"
