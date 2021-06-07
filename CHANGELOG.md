@@ -1,6 +1,15 @@
 # Changelog
 
-_**If you are upgrading:** please see [`UPGRADING.md`](UPGRADING.md)._
+## [4.0.0] - 2021-06-07
+
+### Changed
+
+- **Breaking:** bump `prebuild-install` from 5.x to 6.x ([`37bd9c9`](https://github.com/vweevers/win-version-info/commit/37bd9c9)) (Vincent Weevers)
+- Bump `standard` devDependency ([`d74d7a8`](https://github.com/vweevers/win-version-info/commit/d74d7a8)) (Vincent Weevers)
+
+### Added
+
+- Run tests & prebuild for node 16 ([#21](https://github.com/vweevers/win-version-info/issues/21)) ([`764c868`](https://github.com/vweevers/win-version-info/commit/764c868)) (Tim Perry)
 
 ## [3.1.1] - 2020-08-16
 
@@ -46,7 +55,7 @@ _**If you are upgrading:** please see [`UPGRADING.md`](UPGRADING.md)._
 
 ### Removed
 
-- Drop node 6 and 9 ([`560c955`](https://github.com/vweevers/win-version-info/commit/560c955)) ([#5](https://github.com/vweevers/win-version-info/issues/5))
+- **Breaking:** Drop node 6 and 9 ([`560c955`](https://github.com/vweevers/win-version-info/commit/560c955)) ([#5](https://github.com/vweevers/win-version-info/issues/5))
 
 ### Fixed
 
@@ -73,7 +82,7 @@ _**If you are upgrading:** please see [`UPGRADING.md`](UPGRADING.md)._
 
 ### Removed
 
-- Drop Node 4, 5 and 7
+- **Breaking:** Drop Node 4, 5 and 7
 
 ## [2.0.0-beta1] - 2016-12-03
 
@@ -97,9 +106,11 @@ _**If you are upgrading:** please see [`UPGRADING.md`](UPGRADING.md)._
 
 - Fix installation of prebuilds
 
-## 1.0.0 - 2016-03-27
+## [1.0.0] - 2016-03-27
 
 :seedling: Initial release.
+
+[4.0.0]: https://github.com/vweevers/win-version-info/compare/v3.1.1...v4.0.0
 
 [3.1.1]: https://github.com/vweevers/win-version-info/compare/v3.1.0...v3.1.1
 
@@ -116,3 +127,5 @@ _**If you are upgrading:** please see [`UPGRADING.md`](UPGRADING.md)._
 [2.0.0-beta1]: https://github.com/vweevers/win-version-info/compare/v1.0.1...v2.0.0-beta1
 
 [1.0.1]: https://github.com/vweevers/win-version-info/compare/v1.0.0...v1.0.1
+
+[1.0.0]: https://github.com/vweevers/win-version-info/releases/tag/v1.0.0
