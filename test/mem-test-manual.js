@@ -8,18 +8,18 @@ const gc = global.gc
 test('memory usage', function (t) {
   t.plan(2)
 
-  var company = 'beep'
-  var TOTAL = 2e5
-  var STEP = 1e4
+  const company = 'beep'
+  const TOTAL = 2e5
+  const STEP = 1e4
 
   gen({ assemblyCompany: company }, function (err, exe) {
     t.ifError(err, 'no gen error')
 
-    var n = 0
-    var base = process.memoryUsage().rss
+    let n = 0
+    const base = process.memoryUsage().rss
 
     ;(function next () {
-      for (var i = 0; i < STEP; i++, n++) {
+      for (let i = 0; i < STEP; i++, n++) {
         if (vi(exe).CompanyName !== company) throw new Error('Info wrong')
       }
 
@@ -41,15 +41,15 @@ test('memory usage', function (t) {
 test('memory usage with unfound executable', function (t) {
   t.plan(1)
 
-  var TOTAL = 2e5
-  var STEP = 1e4
+  const TOTAL = 2e5
+  const STEP = 1e4
 
-  var n = 0
-  var base = process.memoryUsage().rss
+  let n = 0
+  const base = process.memoryUsage().rss
 
   ;(function next () {
-    for (var i = 0; i < STEP; i++, n++) {
-      var err = null
+    for (let i = 0; i < STEP; i++, n++) {
+      let err = null
       try { vi('nope.exe') } catch (e) { err = e }
       if (!err) throw new Error('Expected an error')
     }

@@ -1,12 +1,12 @@
 'use strict'
 
-var resolve = require('path').resolve
-var isWindows = process.platform === 'win32'
-var info = isWindows ? require('bindings')('VersionInfo').getInfo : null
+const resolve = require('path').resolve
+const isWindows = process.platform === 'win32'
+const info = isWindows ? require('bindings')('VersionInfo').getInfo : null
 
 module.exports = function (file) {
   if (typeof file !== 'string') {
-    var t = typeof file
+    const t = typeof file
     throw new Error('win-version-info requires a string filename, got: ' + t)
   }
 

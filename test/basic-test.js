@@ -12,7 +12,7 @@ if (process.platform !== 'win32') {
   const gen = require('win-dummy-exe')
   const xtend = require('xtend')
 
-  var dummyDefaults = {
+  const dummyDefaults = {
     InternalName: 'dummy.exe',
     OriginalFilename: 'dummy.exe'
   }
@@ -121,7 +121,7 @@ if (process.platform !== 'win32') {
   })
 
   test('binding throws on non-string', function (t) {
-    var info = require('bindings')('VersionInfo').getInfo
+    const info = require('bindings')('VersionInfo').getInfo
 
     t.plan(1)
 
