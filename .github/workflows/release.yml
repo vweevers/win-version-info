@@ -1,0 +1,55 @@
+name: Release
+on:
+  push:
+    tags: ['*']
+jobs:
+  build:
+    permissions:
+      contents: read
+    strategy:
+      matrix:
+        arch: [x86, x64]
+    runs-on: windows-latest
+    name: Build ${{ matrix.arch }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          architecture: ${{ matrix.arch }}
+      - name: Install
+        run: npm install --ignore-scripts
+      - name: Prebuild
+        run: npm run prebuild
+      - name: Prepare artifact
+        run: tar -zcvf $ARCHIVE_NAME.tar.gz -C prebuilds .
+        shell: bash
+        env:
+          ARCHIVE_NAME: win-${{ matrix.arch }}
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: win-${{ matrix.arch }}
+          path: win-${{ matrix.arch }}.tar.gz
+          retention-days: 1
+  release:
+    needs: build
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    name: Release
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Download artifacts
+        uses: actions/download-artifact@v2
+        with:
+          path: artifacts
+      - name: Create GitHub release
+        uses: docker://antonyurchenko/git-release:v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          args: artifacts/*/*.tar.gz
