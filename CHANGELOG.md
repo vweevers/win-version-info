@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.0.0] - 2021-11-11
+
+### Changed
+
+- **Breaking:** drop Node.js 8 ([`b0add44`](https://github.com/vweevers/win-version-info/commit/b0add44)) (Vincent Weevers)
+- Move to Node-API with prebuildify ([`cf5c6c7`](https://github.com/vweevers/win-version-info/commit/cf5c6c7)) (Vincent Weevers).
+
 ## [4.0.0] - 2021-06-07
 
 ### Changed
@@ -110,22 +117,24 @@
 
 :seedling: Initial release.
 
-[4.0.0]: https://github.com/vweevers/win-version-info/compare/v3.1.1...v4.0.0
+[5.0.0]: https://github.com/vweevers/win-version-info/releases/tag/v5.0.0
 
-[3.1.1]: https://github.com/vweevers/win-version-info/compare/v3.1.0...v3.1.1
+[4.0.0]: https://github.com/vweevers/win-version-info/releases/tag/v4.0.0
 
-[3.1.0]: https://github.com/vweevers/win-version-info/compare/v3.0.1...v3.1.0
+[3.1.1]: https://github.com/vweevers/win-version-info/releases/tag/v3.1.1
 
-[3.0.1]: https://github.com/vweevers/win-version-info/compare/v3.0.0...v3.0.1
+[3.1.0]: https://github.com/vweevers/win-version-info/releases/tag/v3.1.0
 
-[3.0.0]: https://github.com/vweevers/win-version-info/compare/v2.1.0...v3.0.0
+[3.0.1]: https://github.com/vweevers/win-version-info/releases/tag/v3.0.1
 
-[2.1.0]: https://github.com/vweevers/win-version-info/compare/v2.0.0...v2.1.0
+[3.0.0]: https://github.com/vweevers/win-version-info/releases/tag/v3.0.0
 
-[2.0.0]: https://github.com/vweevers/win-version-info/compare/v2.0.0-beta1...v2.0.0
+[2.1.0]: https://github.com/vweevers/win-version-info/releases/tag/v2.1.0
 
-[2.0.0-beta1]: https://github.com/vweevers/win-version-info/compare/v1.0.1...v2.0.0-beta1
+[2.0.0]: https://github.com/vweevers/win-version-info/releases/tag/v2.0.0
 
-[1.0.1]: https://github.com/vweevers/win-version-info/compare/v1.0.0...v1.0.1
+[2.0.0-beta1]: https://github.com/vweevers/win-version-info/releases/tag/v2.0.0-beta1
+
+[1.0.1]: https://github.com/vweevers/win-version-info/releases/tag/v1.0.1
 
 [1.0.0]: https://github.com/vweevers/win-version-info/releases/tag/v1.0.0
