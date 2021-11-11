@@ -1,6 +1,6 @@
 {
   "name": "win-version-info",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "Windows-only native addon to read version info from executables",
   "license": "MIT",
   "main": "index.js",

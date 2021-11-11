@@ -1,6 +1,14 @@
 # Changelog
 
+## [5.0.1] - 2021-11-11
+
+### Fixed
+
+- Include prebuilds in npm package ([`54fadf8`](https://github.com/vweevers/win-version-info/commit/54fadf8)) (Vincent Weevers)
+
 ## [5.0.0] - 2021-11-11
+
+_This version was not published to npm for lack of prebuilds; fixed in 5.0.1._
 
 ### Changed
 
@@ -116,6 +124,8 @@
 ## [1.0.0] - 2016-03-27
 
 :seedling: Initial release.
+
+[5.0.1]: https://github.com/vweevers/win-version-info/releases/tag/v5.0.1
 
 [5.0.0]: https://github.com/vweevers/win-version-info/releases/tag/v5.0.0
 
