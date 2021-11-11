@@ -52,7 +52,7 @@
     "windows"
   ],
   "engines": {
-    "node": ">=8"
+    "node": ">=10"
   },
   "gypfile": true,
   "repository": "vweevers/win-version-info",
