@@ -8,7 +8,7 @@
                     "src/showver.cc"
                 ],
                 "include_dirs" : [
-                    "<!(node -e \"require('nan')\")",
+                    "<!(node -e \"require('napi-macros')\")",
                     "deps/UTF8Conversion"
                 ],
                 "libraries": [

@@ -1,6 +1,7 @@
 'use strict'
 
 const test = require('tape')
+const path = require('path')
 const vi = require('..')
 
 if (process.platform !== 'win32') {
@@ -121,14 +122,16 @@ if (process.platform !== 'win32') {
   })
 
   test('binding throws on non-string', function (t) {
-    const info = require('bindings')('VersionInfo').getInfo
+    const binding = require('node-gyp-build')(path.dirname(__dirname))
 
-    t.plan(1)
+    t.plan(4)
 
-    try {
-      info()
-    } catch (err) {
-      t.is(err.message, 'win-version-info requires a string filename', 'throws')
+    for (const args of [[], [1], [null], [undefined]]) {
+      try {
+        binding.getInfo(...args)
+      } catch (err) {
+        t.is(err.message, 'win-version-info requires a string filename', 'throws')
+      }
     }
   })
 }

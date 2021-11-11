@@ -1,6 +1,6 @@
 #ifndef SHOWVER_H
 #define SHOWVER_H
 
-bool GetMetadata(wchar_t *sfnFile, v8::Local<v8::Object> &metadata);
+bool GetMetadata(wchar_t *sfnFile, napi_env env, napi_value metadata);
 
 #endif

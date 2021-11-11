@@ -15,7 +15,7 @@
 
 #include <malloc.h>
 #include <sstream>
-#include <nan.h>
+#include <node_api.h>
 #include <utf8conv.h>
 
 #include <algorithm>
@@ -122,7 +122,7 @@ static inline void trim(std::string &s) {
 
 // ----------------------------------------------------------------------------
 
-void ReadFixedFileInfo(VS_FIXEDFILEINFO* pValue, v8::Local<v8::Object> &metadata) {
+void ReadFixedFileInfo(VS_FIXEDFILEINFO* pValue, napi_env env, napi_value metadata) {
 	// major.minor.patch.revision
 	std::ostringstream v;
 	v << (pValue->dwFileVersionMS >> 16) << ".";
@@ -133,15 +133,13 @@ void ReadFixedFileInfo(VS_FIXEDFILEINFO* pValue, v8::Local<v8::Object> &metadata
 	std::string version = v.str();
 
 	if (version != "0.0.0.0") {
-		Nan::Set(
-      metadata,
-			Nan::New("FileVersion").ToLocalChecked(),
-			Nan::New(version).ToLocalChecked()
-		);
+		napi_value value;
+		napi_create_string_utf8(env, version.data(), version.size(), &value);
+		napi_set_named_property(env, metadata, "FileVersion", value);
 	}
 }
 
-void SetUTF16Pair(wchar_t *key, wchar_t *value, v8::Local<v8::Object> &metadata) {
+void SetUTF16Pair(wchar_t *key, wchar_t *value, napi_env env, napi_value metadata) {
   std::string utf8Key = UTF8FromUTF16(key);
   std::string utf8Val = UTF8FromUTF16(value);
 
@@ -150,11 +148,13 @@ void SetUTF16Pair(wchar_t *key, wchar_t *value, v8::Local<v8::Object> &metadata)
 	if (utf8Val == "") return;
 	if (isVersionKey(utf8Key) && isEmptyVersion(utf8Val)) return;
 
-	v8::Local<v8::String> k = Nan::New(utf8Key).ToLocalChecked();
-  Nan::Set(metadata, k, Nan::New(utf8Val).ToLocalChecked());
+	napi_value k, v;
+	napi_create_string_utf8(env, utf8Key.data(), utf8Key.size(), &k);
+	napi_create_string_utf8(env, utf8Val.data(), utf8Val.size(), &v);
+	napi_set_property(env, metadata, k, v);
 }
 
-void ReadFileInfo(void* pVer, DWORD size, v8::Local<v8::Object> &metadata) {
+void ReadFileInfo(void* pVer, DWORD size, napi_env env, napi_value metadata) {
 	// Interpret the VS_VERSIONINFO header pseudo-struct
 	VS_VERSIONINFO* pVS = (VS_VERSIONINFO*)pVer;
 #define roundoffs(a,b,r)	(((byte*)(b) - (byte*)(a) + ((r)-1)) & ~((r)-1))
@@ -164,7 +164,7 @@ void ReadFileInfo(void* pVer, DWORD size, v8::Local<v8::Object> &metadata) {
 
 	byte* pVt = (byte*) &pVS->szKey[wcslen(pVS->szKey)+1];
 	VS_FIXEDFILEINFO* pValue = (VS_FIXEDFILEINFO*) roundpos(pVt, pVS, 4);
-	if (pVS->wValueLength) ReadFixedFileInfo(pValue, metadata);
+	if (pVS->wValueLength) ReadFixedFileInfo(pValue, env, metadata);
 
 	// Iterate the children of VS_VERSIONINFO (either StringFileInfo or VarFileInfo)
 	StringFileInfo* pSFI = (StringFileInfo*) roundpos(((byte*)pValue) + pVS->wValueLength, pValue, 4);
@@ -194,7 +194,7 @@ void ReadFileInfo(void* pVer, DWORD size, v8::Local<v8::Object> &metadata) {
 
           if (pS->wValueLength > 0) {
 						// printf("  %-18Sx: %.*S\n", pS->szKey, pS->wValueLength, psVal);
-						SetUTF16Pair(pS->szKey, psVal, metadata);
+						SetUTF16Pair(pS->szKey, psVal, env, metadata);
 					}
 				}
 			}
@@ -206,7 +206,7 @@ void ReadFileInfo(void* pVer, DWORD size, v8::Local<v8::Object> &metadata) {
 
 // ----------------------------------------------------------------------------
 
-bool GetMetadata(wchar_t *sfnFile, v8::Local<v8::Object> &metadata) {
+bool GetMetadata(wchar_t *sfnFile, napi_env env, napi_value metadata) {
 	DWORD dummy;
 	DWORD size = GetFileVersionInfoSizeW(sfnFile, &dummy);
 	if (!size) return false;
@@ -219,7 +219,7 @@ bool GetMetadata(wchar_t *sfnFile, v8::Local<v8::Object> &metadata) {
     return false;
   }
 
-	ReadFileInfo(pVer, size, metadata);
+	ReadFileInfo(pVer, size, env, metadata);
   _freea(pVer);
 
   return true;
