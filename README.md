@@ -5,7 +5,7 @@
 [![npm status](http://img.shields.io/npm/v/win-version-info.svg)](https://www.npmjs.org/package/win-version-info)
 [![Node version](https://img.shields.io/node/v/win-version-info.svg)](https://www.npmjs.com/package/win-version-info)
 [![Test](https://img.shields.io/github/workflow/status/vweevers/win-version-info/Test?label=test)](https://github.com/vweevers/win-version-info/actions/workflows/test.yml)
-[![Standard](https://img.shields.io/badge/standard-informational?logo=javascript&logoColor=fff)](https://standardjs.com)
+[![Standard](https://img.shields.io/badge/standard-informational?logo=javascript\&logoColor=fff)](https://standardjs.com)
 [![Common Changelog](https://common-changelog.org/badge.svg)](https://common-changelog.org)
 
 ## Example
