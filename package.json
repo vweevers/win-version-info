@@ -36,13 +36,12 @@
   "devDependencies": {
     "cross-env": "^7.0.3",
     "hallmark": "^4.0.0",
-    "node-gyp": "^7.1.2",
+    "node-gyp": "^9.0.0",
     "prebuildify": "^5.0.0",
     "prebuildify-ci": "^1.0.5",
-    "standard": "^16.0.3",
-    "tape": "^5.0.0",
-    "win-dummy-exe": "0.0.1",
-    "xtend": "^4.0.1"
+    "standard": "^17.0.0",
+    "tape": "^5.5.3",
+    "win-dummy-exe": "0.0.1"
   },
   "keywords": [
     "exe",

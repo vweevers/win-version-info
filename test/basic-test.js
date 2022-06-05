@@ -11,7 +11,6 @@ if (process.platform !== 'win32') {
   })
 } else {
   const gen = require('win-dummy-exe')
-  const xtend = require('xtend')
 
   const dummyDefaults = {
     InternalName: 'dummy.exe',
@@ -23,10 +22,7 @@ if (process.platform !== 'win32') {
 
     gen({ assemblyCompany: 'beep' }, function (err, exe) {
       t.ifError(err, 'no gen error')
-
-      t.same(vi(exe), xtend(dummyDefaults, {
-        CompanyName: 'beep'
-      }), 'info ok')
+      t.same(vi(exe), { ...dummyDefaults, CompanyName: 'beep' }, 'info ok')
     })
   })
 
@@ -35,10 +31,7 @@ if (process.platform !== 'win32') {
 
     gen({ assemblyCompany: '  beep   ' }, function (err, exe) {
       t.ifError(err, 'no gen error')
-
-      t.same(vi(exe), xtend(dummyDefaults, {
-        CompanyName: 'beep'
-      }), 'info ok')
+      t.same(vi(exe), { ...dummyDefaults, CompanyName: 'beep' }, 'info ok')
     })
   })
 
@@ -47,18 +40,12 @@ if (process.platform !== 'win32') {
 
     gen({ assemblyFileVersion: '0.0.0.0', assemblyInformationalVersion: '2.0' }, function (err, exe) {
       t.ifError(err, 'no gen error (1)')
-
-      t.same(vi(exe), xtend(dummyDefaults, {
-        ProductVersion: '2.0'
-      }), 'info ok (1)')
+      t.same(vi(exe), { ...dummyDefaults, ProductVersion: '2.0' }, 'info ok (1)')
     })
 
     gen({ assemblyFileVersion: '1.0.0.1', assemblyInformationalVersion: '0.0' }, function (err, exe) {
       t.ifError(err, 'no gen error (1)')
-
-      t.same(vi(exe), xtend(dummyDefaults, {
-        FileVersion: '1.0.0.1'
-      }), 'info ok (1)')
+      t.same(vi(exe), { ...dummyDefaults, FileVersion: '1.0.0.1' }, 'info ok (1)')
     })
   })
 
@@ -67,11 +54,7 @@ if (process.platform !== 'win32') {
 
     gen({ assemblyFileVersion: '2.0.0.2', assemblyInformationalVersion: '2.0b' }, function (err, exe) {
       t.ifError(err, 'no gen error')
-
-      t.same(vi(exe), xtend(dummyDefaults, {
-        FileVersion: '2.0.0.2',
-        ProductVersion: '2.0b'
-      }), 'info ok')
+      t.same(vi(exe), { ...dummyDefaults, FileVersion: '2.0.0.2', ProductVersion: '2.0b' }, 'info ok')
     })
   })
 
@@ -80,26 +63,17 @@ if (process.platform !== 'win32') {
 
     gen({ assemblyCopyright: '© Beep 嘟 Inc.' }, function (err, exe) {
       t.ifError(err, 'no gen error')
-
-      t.same(vi(exe), xtend(dummyDefaults, {
-        LegalCopyright: '© Beep 嘟 Inc.'
-      }), 'info ok')
+      t.same(vi(exe), { ...dummyDefaults, LegalCopyright: '© Beep 嘟 Inc.' }, 'info ok')
     })
 
     gen({ assemblyCompany: '   © Beep 嘟 Inc.  ' }, function (err, exe) {
       t.ifError(err, 'no gen error')
-
-      t.same(vi(exe), xtend(dummyDefaults, {
-        CompanyName: '© Beep 嘟 Inc.'
-      }), 'info ok')
+      t.same(vi(exe), { ...dummyDefaults, CompanyName: '© Beep 嘟 Inc.' }, 'info ok')
     })
 
     gen({ assemblyTitle: '  嘟© Beep 嘟 Inc.嘟' }, function (err, exe) {
       t.ifError(err, 'no gen error')
-
-      t.same(vi(exe), xtend(dummyDefaults, {
-        FileDescription: '嘟© Beep 嘟 Inc.嘟'
-      }), 'info ok')
+      t.same(vi(exe), { ...dummyDefaults, FileDescription: '嘟© Beep 嘟 Inc.嘟' }, 'info ok')
     })
   })
 
