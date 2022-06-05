@@ -8,7 +8,7 @@ jobs:
       contents: read
     strategy:
       matrix:
-        arch: [x86, x64]
+        arch: [x64]
     runs-on: windows-latest
     name: Build ${{ matrix.arch }}
     steps:
