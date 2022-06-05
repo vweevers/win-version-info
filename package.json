@@ -26,7 +26,7 @@
     "hallmark": "hallmark --fix",
     "install": "node skip.js || node-gyp-build",
     "rebuild": "npm run install --build-from-source",
-    "prebuild": "prebuildify -t 10.16.0 --napi --strip",
+    "prebuild": "prebuildify --napi --strip",
     "download-prebuilds": "prebuildify-ci download"
   },
   "dependencies": {
@@ -53,7 +53,7 @@
     "windows"
   ],
   "engines": {
-    "node": ">=10"
+    "node": ">=14"
   },
   "gypfile": true,
   "repository": "vweevers/win-version-info",
