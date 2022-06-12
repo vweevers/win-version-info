@@ -7,7 +7,7 @@ jobs:
     strategy:
       matrix:
         node: [14, 16, 18]
-        arch: [x64]
+        arch: [x86, x64]
     runs-on: windows-latest
     name: Node ${{ matrix.node }} ${{ matrix.arch }}
     steps:
