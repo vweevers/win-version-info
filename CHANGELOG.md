@@ -1,11 +1,19 @@
 # Changelog
 
+## [6.0.1] - 2022-06-12
+
+### Fixed
+
+- Restore 32-bit prebuild ([`acb9b62`](https://github.com/vweevers/win-version-info/commit/acb9b62)) (Vincent Weevers)
+
 ## [6.0.0] - 2022-06-05
+
+_The 32-bit prebuild was restored in 6.0.1._
 
 ### Changed
 
 - **Breaking:** drop Node.js 10 and 12 ([`9c7e4fa`](https://github.com/vweevers/win-version-info/commit/9c7e4fa)) (Vincent Weevers)
-- **Breaking:** drop 32-bit Windows ([`cb1fdec`](https://github.com/vweevers/win-version-info/commit/cb1fdec)) (Vincent Weevers)
+- **Breaking:** drop 32-bit prebuild ([`cb1fdec`](https://github.com/vweevers/win-version-info/commit/cb1fdec)) (Vincent Weevers)
 - Replace use of `std::ptr_fun` ([`8f5ac34`](https://github.com/vweevers/win-version-info/commit/8f5ac34)) (Vincent Weevers)
 
 ## [5.0.1] - 2021-11-11
@@ -132,6 +140,8 @@ _This version was not published to npm for lack of prebuilds; fixed in 5.0.1._
 ## [1.0.0] - 2016-03-27
 
 :seedling: Initial release.
+
+[6.0.1]: https://github.com/vweevers/win-version-info/releases/tag/v6.0.1
 
 [6.0.0]: https://github.com/vweevers/win-version-info/releases/tag/v6.0.0
 
