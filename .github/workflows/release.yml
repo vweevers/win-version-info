@@ -29,7 +29,7 @@ jobs:
         env:
           ARCHIVE_NAME: win-${{ matrix.arch }}
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: win-${{ matrix.arch }}
           path: win-${{ matrix.arch }}.tar.gz
